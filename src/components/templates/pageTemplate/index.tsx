@@ -16,7 +16,12 @@ const PageTemplate = ({ activeIndex, background, children }: PageTemplateProps) 
     api.start({ transform: `translateY(-${activeIndex * 100}%)` });
   }, [activeIndex, api]);
 
-  const renderBackground = checkMediaType(background) === 'img' ? <></> : checkMediaType(background) === 'video' ? <BackgroundVideo src={background} /> : null;
+  const renderBackground =
+    checkMediaType(background) === 'img' ? (
+      <BackgroundVideo data-testid="background-video" src={background} />
+    ) : checkMediaType(background) === 'video' ? (
+      <BackgroundVideo data-testid="background-video" src={background} />
+    ) : null;
 
   return (
     <animated.div style={{ transform }} className="relative h-full w-full bg-main">
