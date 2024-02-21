@@ -102,7 +102,7 @@ const CharacterCard = () => {
 const Characters = () => {
   return (
     <>
-      <div className="absolute top-0 z-50 flex h-[90%] w-full flex-col justify-between p-8">
+      <div className="absolute top-0 z-50 flex h-full w-full flex-col justify-between p-8">
         <div className="space-y-4 ">
           <h4 className="text-4xl font-bold">Personagens</h4>
           <p className="text-base font-light opacity-90">Informações sobre os exploradores</p>
@@ -114,8 +114,9 @@ const Characters = () => {
             <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 items-center gap-2">
               {new Array(length).fill('').map((_, i) => (
                 <Avatar
-                  size={`${activeIndex === i ? 'sm' : 'xs'}`}
+                  size={`${activeIndex === i ? 'md' : 'sm'}`}
                   key={i}
+                  src="https://raw.githubusercontent.com/GrapeSalad/Betrayal-Clone/master/src/assets/img/professorlongfellow.png"
                   className="cursor-pointer bg-white"
                   onClick={() => setActiveIndex(i)}
                   placeholder={undefined}
