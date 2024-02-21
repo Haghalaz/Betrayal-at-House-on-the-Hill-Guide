@@ -8,43 +8,27 @@ import pages from './data/pages';
 
 function App() {
   const [indexPage, setIndexPage] = useState(0);
-
-  const [{ x, y, transform }, api] = useSpring(() => ({
-    x: 0,
-    y: 0,
-    transform: `translateY(-${indexPage * 100}%)`,
-    //config: { mass: 5, tension: 500, friction: 80 },
-  }));
+  const [{ transform }, api] = useSpring(() => ({ transform: `translateY(0%)` }));
 
   useEffect(() => {
     api.start({ transform: `translateY(-${indexPage * 100}%)` });
   }, [indexPage, api]);
 
-  const setPage = (index: number) => () => {
-    setIndexPage(index);
-  };
-
-  const handleDown = () => {
-    setIndexPage((prevIndex) => (prevIndex === pages.length - 1 ? pages.length - 1 : prevIndex + 1));
-  };
-
-  const handleUp = () => {
-    setIndexPage((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
-  };
+  const setPage = (index: number) => () => setIndexPage(index);
 
   return (
     <div className="relative grid h-screen w-screen grid-rows-10 overflow-hidden bg-secondary text-white transition-all">
       <Header pages={pages} activeIndex={indexPage} setIndex={setPage} />
 
-      <div className="row-span-9 overflow-hidden bg-gray-900">
+      <div className="relative row-span-9 overflow-hidden bg-gray-900">
         {pages.map(({ id, page }) => (
-          <animated.div key={id} style={{ x, y, transform }} className="relative h-full w-full bg-main">
+          <animated.div key={id} style={{ transform }} className="relative h-full w-full bg-main">
             {page}
           </animated.div>
         ))}
-      </div>
 
-      <Navigation handleUp={handleUp} handleDown={handleDown} />
+        <Navigation activeIndex={indexPage} setIndex={setIndexPage} maxSize={pages.length - 1} />
+      </div>
     </div>
   );
 }
