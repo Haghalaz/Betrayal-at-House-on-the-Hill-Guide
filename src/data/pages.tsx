@@ -5,19 +5,24 @@ import { TbCards, TbUsers } from 'react-icons/tb';
 import Home from '@src/components/pages/home';
 import Characters from '@src/components/pages/characters';
 
+import VideoChar from '@assets/video/Char.mp4';
+import VideoHouse from '@assets/video/House.mp4';
+
 export interface PagesProps {
   id: number;
   label: string;
   icon: IconType;
   page: JSX.Element;
+  background: string;
 }
 
-const pages: PagesProps[] = [
+const pagesList: PagesProps[] = [
   {
     id: 0,
     label: 'Sobre',
     icon: RiHomeLine,
     page: <Home />,
+    background: VideoHouse,
   },
 
   {
@@ -25,6 +30,7 @@ const pages: PagesProps[] = [
     label: 'Personagens',
     icon: TbUsers,
     page: <Characters />,
+    background: VideoChar,
   },
 
   {
@@ -32,6 +38,7 @@ const pages: PagesProps[] = [
     label: 'Cartas',
     icon: TbCards,
     page: <></>,
+    background: '',
   },
 
   {
@@ -39,7 +46,8 @@ const pages: PagesProps[] = [
     label: 'Assombrações',
     icon: RiGhost2Line,
     page: <></>,
+    background: '',
   },
 ];
 
-export default pages;
+export default pagesList;

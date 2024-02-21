@@ -1,4 +1,3 @@
-import VideoChar from '@assets/video/Char.mp4';
 import House from '@assets/img/House.png';
 
 import { Avatar, Carousel } from '@material-tailwind/react';
@@ -90,9 +89,9 @@ const CharacterCard = () => {
               </p>
             </div>
           </div>
-        </div>{' '}
-        d<div className="absolute top-0 z-20 h-full w-full bg-black opacity-80 "></div>
-        <div className="absolute top-0 z-10 h-full w-full bg-[#643D5F] opacity-100 mix-blend-hue "></div>
+        </div>
+        <div className="absolute top-0 z-20 h-full w-full bg-black opacity-80 "></div>
+        <div className="absolute top-0 z-10 h-full w-full bg-[#643D5F] opacity-100 mix-blend-hue"></div>
         <img className="absolute top-0 z-0 h-full w-full object-cover opacity-100 " src={House}></img>
       </div>
     </div>
@@ -101,42 +100,35 @@ const CharacterCard = () => {
 
 const Characters = () => {
   return (
-    <>
-      <div className="absolute top-0 z-50 flex h-full w-full flex-col justify-between p-8">
-        <div className="space-y-4 ">
-          <h4 className="text-4xl font-bold">Personagens</h4>
-          <p className="text-base font-light opacity-90">Informações sobre os exploradores</p>
-        </div>
-
-        <Carousel
-          className="grow transition-all"
-          navigation={({ setActiveIndex, activeIndex, length }) => (
-            <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 items-center gap-2">
-              {new Array(length).fill('').map((_, i) => (
-                <Avatar
-                  size={`${activeIndex === i ? 'md' : 'sm'}`}
-                  key={i}
-                  src="https://raw.githubusercontent.com/GrapeSalad/Betrayal-Clone/master/src/assets/img/professorlongfellow.png"
-                  className="cursor-pointer bg-white"
-                  onClick={() => setActiveIndex(i)}
-                  placeholder={undefined}
-                />
-              ))}
-            </div>
-          )}
-          placeholder={undefined}
-        >
-          <CharacterCard />
-
-          <CharacterCard />
-        </Carousel>
+    <div className="absolute top-0 z-50 flex h-full w-full flex-col justify-between p-8">
+      <div className="space-y-4 ">
+        <h4 className="text-4xl font-bold">Personagens</h4>
+        <p className="text-base font-light opacity-90">Informações sobre os exploradores</p>
       </div>
 
-      <video className="absolute top-0 z-0 h-full w-full object-cover opacity-20" loop autoPlay>
-        <source src={VideoChar} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </>
+      <Carousel
+        className="grow transition-all"
+        navigation={({ setActiveIndex, activeIndex, length }) => (
+          <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 items-center gap-2">
+            {new Array(length).fill('').map((_, i) => (
+              <Avatar
+                size={`${activeIndex === i ? 'md' : 'sm'}`}
+                key={i}
+                src="https://raw.githubusercontent.com/GrapeSalad/Betrayal-Clone/master/src/assets/img/professorlongfellow.png"
+                className="cursor-pointer bg-white"
+                onClick={() => setActiveIndex(i)}
+                placeholder={undefined}
+              />
+            ))}
+          </div>
+        )}
+        placeholder={undefined}
+      >
+        <CharacterCard />
+
+        <CharacterCard />
+      </Carousel>
+    </div>
   );
 };
 
