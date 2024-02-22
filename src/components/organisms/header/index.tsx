@@ -4,7 +4,7 @@ import { PagesProps } from '@src/data/pages';
 interface HeaderProps {
   pages: PagesProps[];
   activeIndex: number;
-  setIndex: (index: number) => () => void;
+  setIndex: (value: React.SetStateAction<number>) => void;
 }
 
 const Header = ({ pages, activeIndex, setIndex }: HeaderProps) => {
@@ -15,12 +15,12 @@ const Header = ({ pages, activeIndex, setIndex }: HeaderProps) => {
       <div className="flex items-center gap-8 text-sm">
         {pages.map(({ id, label, icon: Icon }) => (
           <div
-            className={`flex cursor-pointer items-center gap-2 ${id === activeIndex ? 'opacity-100' : 'opacity-50 hover:opacity-100'}`}
             key={id}
-            onClick={setIndex(id)}
+            className={`flex cursor-pointer items-center gap-2 ${id === activeIndex ? 'opacity-100' : 'opacity-50 hover:opacity-100'}`}
+            onClick={() => setIndex(id)}
           >
-            <Icon />
-            <p>{label}</p>
+            <Icon className="h-4 w-4" />
+            <p className="hidden md:block">{label}</p>
           </div>
         ))}
       </div>
