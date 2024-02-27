@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/betrayal-at-house-on-the-hill-guide/',
+  base: '/Betrayal-at-House-on-the-Hill-Guide/',
 
   resolve: {
     alias: {
