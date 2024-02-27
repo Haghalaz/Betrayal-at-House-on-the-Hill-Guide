@@ -4,6 +4,7 @@ import { TbCards, TbUsers } from 'react-icons/tb';
 
 import Home from '@src/components/pages/home';
 import Characters from '@src/components/pages/characters';
+import Cards from '@src/components/pages/Cards';
 
 import VideoChar from '@assets/video/Char.mp4';
 import VideoHouse from '@assets/video/House.mp4';
@@ -37,7 +38,7 @@ const pagesList: PagesProps[] = [
     id: 2,
     label: 'Cartas',
     icon: TbCards,
-    page: <></>,
+    page: <Cards />,
     background: '',
   },
 
